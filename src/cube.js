@@ -46,7 +46,6 @@ loader.load( '../public/testModel/200y.gltf', function ( gltf ) {
 function animate() {
     controls.update();
     requestAnimationFrame(animate);
-    cube.rotation.y += 0.005;
     renderer.render(scene, camera);
 }
 
