@@ -33,7 +33,7 @@ const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
 
 const loader = new GLTFLoader();
 
-loader.load( '../public/testModel/200y.gltf', function ( gltf ) {
+loader.load( './testModel/200y.gltf', function ( gltf ) {
 
 	scene.add( gltf.scene );
 
