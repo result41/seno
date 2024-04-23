@@ -42,14 +42,18 @@
 		<script>
 			document.body.style.overflowY = "hidden";
 
+			
+			document.addEventListener("DOMContentLoaded", function() {
+				vid = document.querySelector("video");
+				console.log(vid);
+				vid.volume = 0.05;
+				vid.play();
+			});
+
     		setTimeout(function() {
         		document.body.style.overflowY = "visible";
-				console.log("unlock");
     			}, 3 * 1000);
-			
-		</script>
 
-		<script>
 			window.addEventListener('scroll', function() {
     			var rect = document.getElementById('cubeCanvas').getBoundingClientRect();
 				var move=0;				
@@ -66,7 +70,7 @@
 			});
 		</script>
 		<div id="top"  style="text-align: center; background-color:black" >
-			<video controls autoplay width="90%" style="margin-top:2%">
+			<video controls width="85%" style="margin-top:2%">
 				<source src="./src/intro.mp4" type="video/mp4" />
 			</video>
 		</div>
