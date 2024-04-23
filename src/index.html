@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Seno</title>
+		<style>
+			body { margin: 0;}
+			canvas { display: block; }
+			div{background-color: gray; height: 1039px;}
+			/*
+			#left{background-color: burlywood}
+			#right{background-color: bisque}
+			*/
+			.glass {
+  				background: rgba(0, 0, 0, 0.1);
+  				backdrop-filter: blur(10px);
+  				color: white;
+			}
+		</style>
+	</head>
+	<body style="overflow-x: hidden">
+
+		<script>
+			document.body.style.overflowY = "hidden";
+
+    		setTimeout(function() {
+        		document.body.style.overflowY = "visible";
+				console.log("unlock");
+    			}, 3 * 1000);
+			
+		</script>
+
+		<script>
+			window.addEventListener('scroll', function() {
+    			var rect = document.getElementById('cubeCanvas').getBoundingClientRect();
+				var move=0;				
+    			if(rect.top <= window.innerHeight && rect.bottom >= 0) {
+        			var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+					if(scrollPosition>=600){
+						move = ((scrollPosition - 600) / (1000 - 600)) * (100 - 0);        				
+					}else{
+						move = 0;
+					}
+					document.getElementById('left').style.transform = 'translate3d('+ (-move) + '%, 0px, 0px)';
+					document.getElementById('right').style.transform = 'translate3d('+ move + '%, 0px, 0px)';
+    			}
+			});
+		</script>
+		<div id="top"  style="text-align: center; background-color:black" >
+			<video controls autoplay width="90%" >
+				<source src="./intro.mp4" type="video/mp4" />
+			</video>
+		</div>
+
+		<div id="left" class="glass" style="height: 1039px; width: 50%; position: absolute; z-index:5; left: 0;"></div>
+		<div id="right" class="glass" style="height: 1039px; width: 50%; position: absolute; z-index:5; right: 0;"></div>
+		<canvas id="cubeCanvas" style="height: 1039px;"></canvas>
+		<script type="module" src="./cube.js"></script>
+	</body>
+</html>
