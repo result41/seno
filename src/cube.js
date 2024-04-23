@@ -16,7 +16,7 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color("rgb(255,255,255)");
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 0, 5);
+camera.position.set(0, 50, 40);
 camera.rotation.set(0, 0, 0);
 /*
 camera.position.x = 0;
@@ -28,9 +28,6 @@ const controls = new OrbitControls( camera, renderer.domElement );
 controls.enableZoom = false;
 controls.update();
 
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
-
 const loader = new GLTFLoader();
 
 loader.load( './src/testModel/200y.glb', function ( gltf ) {
@@ -41,6 +38,9 @@ loader.load( './src/testModel/200y.glb', function ( gltf ) {
 	console.error( error );
 
 } );
+
+const light = new THREE.AmbientLight(0xffffff, 1);
+scene.add(light);
 
 function animate() {
     controls.update();
